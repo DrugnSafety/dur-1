@@ -43,8 +43,8 @@ public class QRCodeActivity extends AppCompatActivity {
     private String username;
     private TextView userName;
 
-    private EDBBpDec EDBDec;
-    private Upharm2DDecoder decoder;
+    private EDBBpDec EDBDec; // EDB 디코더
+    private Upharm2DDecoder decoder; // 유비케어 디코더
     private Context context;
 
     private SharedPreferences preferences;
@@ -72,7 +72,8 @@ public class QRCodeActivity extends AppCompatActivity {
         if(this.EDBDec == null) {
             this.EDBDec = new EDBBpDec(this.context);
         }
-
+        //유비케어 디코더
+        //userchecker 함수 필독
         new UserChecker().execute();
         decoder = new Upharm2DDecoder(this, "cbnuh00", "cbnuh00");
     }
@@ -178,7 +179,7 @@ public class QRCodeActivity extends AppCompatActivity {
             }
             // TODO 리턴되는 에러 메시지에 따른 처리 구현 필요(김용기)
             else {
-                List<String> list = decoder.exportDrugcodes(data);
+                List<String> list = decoder.exportDrugcodes(data); //유비케어로 QR코드 스캔
 
                 if(!list.isEmpty()) {
                     for(String code : list) {

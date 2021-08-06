@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
@@ -86,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         } catch (ExecutionException e) {
             Toast.makeText(this, "ERROR_CODE : " + EXECUTION_EXCEPTION, Toast.LENGTH_SHORT).show();
         }
+        Log.d("login",result.get(0));
         switch (result.get(0)){
             case "LOGIN_SUCCESS":
                 Intent intent = new Intent(this, MedicineCardActivity.class);
